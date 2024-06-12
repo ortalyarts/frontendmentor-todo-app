@@ -1,0 +1,136 @@
+.task{
+    background: var(--background-color2);
+    border-bottom: var(--border1);
+    width:100%;
+    height:4.063rem;
+    padding:1rem 1.5rem ;
+    display:flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap:1.5rem;
+    touch-action: none;
+    font-size: 1.125rem;
+    letter-spacing: -0.25px;
+    color: var(--text-color1);
+    font-weight:400;
+}
+
+.task-title {
+  /* width:100%; */
+  flex:1;
+  text-align: left;
+}
+
+/* Restyling radio and checkbox */
+.task input[type=radio],
+.task input[type=checkbox] {
+  -webkit-appearance: none;
+  appearance: none;
+  background: var(--background-color2); /* for iOS */
+  border: var(--border1);
+  height: 1.5rem;
+  width: 1.5rem;
+  padding:0;
+  margin:0;
+  display: inline-block;
+  border-radius: 50%;
+  vertical-align: text-bottom;
+  position: relative;
+  cursor:pointer;
+  
+  &[disabled],
+  &[aria-disabled=true] {
+    opacity: .4;
+  }
+  
+  &::before {
+    content: '';
+    position: absolute;
+    margin: auto;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    overflow: hidden;
+    top: 0;
+  }
+  
+  &:focus {
+    outline: 1px solid var(--color3); 
+    /* outline-offset: 2px; */
+  }
+}
+
+input[type=checkbox] {
+  border-radius: 10%;
+}
+input[type=radio]:not(:checked):hover,
+input[type=checkbox]:not(:checked):hover, 
+input[type=radio]:not(:checked):focus-visible, 
+input[type=checkbox]:not(:checked):focus-visible{
+    background: linear-gradient(var(--background-color2), var(--background-color2)) padding-box,
+    var(--gradient1) border-box;
+  border-radius: 50em;
+  border: 1px solid transparent;
+  transition: 0.2s all linear;
+}
+input[type=checkbox]:checked:hover::before, input[type=radio]:checked:hover::before{
+  
+}
+input[type=radio]::before {
+  height: 0;
+ width: 0;
+}
+input[type=checkbox]:checked, input[type=radio]:checked {
+  background: var(--gradient1);
+}
+.task:has(input[type=checkbox]:checked) .task-title, .task:has(input[type=radio]:checked) .task-title {
+  color: var(--text-color3);
+  text-decoration: line-through;
+}
+input[type=radio]:checked::before {
+  border: 6px solid var(--color3);
+  border-radius: 100%;
+  outline-offset: -6px;
+  background: var(--color3);
+}
+input[type=checkbox]:checked:hover, input[type=radio]:checked:hover {
+    border: 1px solid rgba(85,221,255,0.5);
+}
+input[type=checkbox]:indeterminate::before,
+input[type=checkbox][aria-checked=mixed]::before {
+  border: 2px solid #222;
+  height: 0;
+  width: 40%;
+}
+
+input[type=checkbox]:checked::before {
+  border-right: 3px solid white;
+  border-bottom: 3px solid white;
+  height: 50%;
+  width: 30%;
+  transform: rotate(45deg) translateY(-10%) translateX(-10%);
+}
+
+.icon-delete {
+  width:1.125rem;
+  height:1.125rem;
+  padding:0;
+  border:0 !important;
+  outline: none !important;
+  display:inline-block;
+  cursor:pointer;
+  background:transparent;
+  text-align: center;
+  justify-self: flex-end;
+}
+
+.icon-delete svg {
+  fill:transparent;
+  transition: 0.2s ease;
+}
+.task:hover .icon-delete svg {
+  fill:white;
+}
+.icon-delete:hover svg, .icon-delete:focus-visible svg {
+  fill:red !important;
+}

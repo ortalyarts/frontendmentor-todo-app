@@ -1,0 +1,56 @@
+/* Toggle switch theme */
+
+.switch-holder {
+    display:flex;
+    gap:1rem;
+    align-items: center;
+  }
+  .moon {
+    width:1.25rem;
+    height:1.25rem;
+    background-repeat: no-repeat;
+    background-position: left center, right center;
+  }
+  .moon svg{
+    stroke:var(--text-color2);
+  }
+  label.switch-container {
+    display: block;
+    width:2.5rem;
+    height:1.25rem;
+    position: relative;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    background: var(--text-color2);
+    border-radius: 1rem;
+    justify-self: end;
+    transition: opacity 0.2s;
+  }
+  /* Hide the browser's default checkbox */
+  label.switch-container input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+  }
+  label.switch-container::before {
+    content: "";
+    display:block;
+    width:0.875rem;
+    height:0.875rem;
+    background:white;
+    border-radius: 50%;
+    margin:0.188rem 1.438rem 0.188rem 0.188rem; 
+    transition: 0.2s;
+  }
+  label.switch-container:has(input:checked)::before{
+    margin:0.188rem 0.188rem 0.188rem 1.438rem; 
+  }
+  .switch-container:hover, .switch-container:has(input:focus-visible) {
+    opacity: .5;
+  }
+  /* End theme switch */
