@@ -82,7 +82,7 @@ body {
   font-family: var(--ffsansserif);
 
   background-color: var(--background-color1);
-  background-image: url(./assets/images/bg-desktop-light.jpg);
+  background-image: url(./assets/images/bg-mobile-light.jpg);
   background-position: center top;
   background-size: contain;
   background-repeat: no-repeat;
@@ -98,7 +98,7 @@ body {
       --text-color3: rgb(77,80,103);
       --border1: 1px solid rgb(57,58,75);
       --shadow-color1: var(--accent-color1);
-      background-image: url(./assets/images/bg-desktop-dark.jpg);
+      background-image: url(./assets/images/bg-mobile-dark.jpg);
     }
     .moon svg{
       stroke:var(--accent-color1);
@@ -209,12 +209,17 @@ h1 {
 }
 .bottom {
   display: grid;
-  grid-template-columns: 1fr 2fr 1fr;
+  grid-template-columns: 1fr 1fr;
   justify-content: center;
   align-items: center;
   padding:0 1.5rem;
-  height:3.125rem;
+  min-height:3.125rem;
   background: var(--background-color2);
+}
+.controls {
+  order:3;
+  width:100%;
+  grid-column: span 2;
 }
 .controls fieldset {
   border:none;
@@ -256,10 +261,12 @@ h1 {
 }
 
 .bottom p.textB {
+  order:1;
   justify-self: start;
 }
 .bottom .clear {
   justify-self: end;
+  order:2;
 }
 
 footer {
@@ -269,4 +276,28 @@ footer, footer p, footer a{
   font-size: 0.875rem;
   color: var(--text-color3);
   text-align: center;
+}
+
+@media screen and (min-width:50rem) {
+  body{
+    background-image: url(./assets/images/bg-desktop-light.jpg);
+  }
+  html.dark {
+    body{
+      background-image: url(./assets/images/bg-desktop-dark.jpg);
+    }
+  }
+  .bottom {
+    grid-template-columns: 1fr 2fr 1fr;
+  }
+  .bottom .textB{
+    order: 1;
+  }
+  .bottom .controls{
+    order: 2;
+    grid-column: span 1;
+  } 
+  .bottom .clear {
+    order:3;
+  }
 }
